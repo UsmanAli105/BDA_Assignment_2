@@ -6,7 +6,7 @@ def create_database():
     '''Creates and connects to youtube  database. Returns cursor and connection to DB'''
 
     # connect to default database
-    conn = psycopg2.connect("host=localhost user=postgres password=F4D42FD7")
+    conn = psycopg2.connect("host=localhost user=postgres password=paybox")
     conn.set_session(autocommit=True)
     cur = conn.cursor()
 
@@ -18,7 +18,7 @@ def create_database():
     conn.close()
 
     # connect to youtubedb database
-    conn = psycopg2.connect("host=localhost dbname=youtubedb user=postgres password=F4D42FD7")
+    conn = psycopg2.connect("host=localhost dbname=youtubedb user=postgres password=paybox")
     cur = conn.cursor()
 
     return cur, conn
@@ -44,7 +44,7 @@ def main():
     """
     cur, conn = create_database()
 
-    drop_tables(cur, conn)
+    # drop_tables(cur, conn)
     create_tables(cur, conn)
 
     conn.close()
